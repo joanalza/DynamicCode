@@ -55,10 +55,11 @@ public class RunRKEDADynamic {
 		int truncSize = 3;
 		int fes = -1; // 2500000
 		
+		String diversity = "cayley";
 		
         int nameInstance = problempath.split("/").length - 1;
         int nameDynFile = dynamicFile.split("/").length - 1;
-		String resultsPath = "./results/trash/";
+		String resultsPath = "./results/";
 		
 		String saveAs = null;
 		if(coolingSchedule.equals("original")){
@@ -72,9 +73,10 @@ public class RunRKEDADynamic {
     	}
 
 		
-		String[] str = new String[] { Integer.toString(populationSize), problempath, dynamicFile, Integer.toString(fes),
-				Integer.toString(truncSize), Integer.toString(elitism), Double.toString(initialStdev), resultsPath,
-				saveAs, coolingSchedule, Double.toString(coolingParam2) };
+		String[] str = new String[] { Integer.toString(populationSize), problempath, dynamicFile,
+				Integer.toString(fes), Integer.toString(truncSize), Integer.toString(elitism),
+				Double.toString(initialStdev), resultsPath, saveAs, coolingSchedule,
+				Double.toString(coolingParam2), diversity };
 		RKEDADynamicMain.main(str);
 		//
 		// try {

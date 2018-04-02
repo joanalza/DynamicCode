@@ -6,10 +6,10 @@ public class GenerateRunFilesLoop {
 
 	public static void main(String[] args) throws IOException {
 
-		String[] fileNames = { "data/taillard_instances/tai50_10_0.fsp", "data/taillard_instances/tai50_10_1.fsp",
-				"data/taillard_instances/tai50_10_2.fsp","data/taillard_instances/tai50_10_3.fsp","data/taillard_instances/tai50_10_4.fsp",
-				"data/taillard_instances/tai50_10_5.fsp","data/taillard_instances/tai50_10_6.fsp","data/taillard_instances/tai50_10_7.fsp",
-				"data/taillard_instances/tai50_10_8.fsp","data/taillard_instances/tai50_10_9.fsp"};
+		String[] fileNames = { "data/taillard_instances/tai50_5_0.fsp", "data/taillard_instances/tai50_5_1.fsp",
+				"data/taillard_instances/tai50_5_2.fsp","data/taillard_instances/tai50_5_3.fsp","data/taillard_instances/tai50_5_4.fsp",
+				"data/taillard_instances/tai50_5_5.fsp","data/taillard_instances/tai50_5_6.fsp","data/taillard_instances/tai50_5_7.fsp",
+				"data/taillard_instances/tai50_5_8.fsp","data/taillard_instances/tai50_5_9.fsp"};
 
 		String[] dynamicProfilePaths = { "data/dynamic/dynProfile-noChange.txt", "data/dynamic/dynProfile-n50-c3-Cayley5.txt", "data/dynamic/dynProfile-n50-c10-Cayley10.txt" };
 
@@ -70,7 +70,7 @@ public class GenerateRunFilesLoop {
 
 		String out = header + content + "\n" + lastline;
 		System.out.println(out);
-		BufferedWriter br = new BufferedWriter(new FileWriter("./runBatch50.txt"));
+		BufferedWriter br = new BufferedWriter(new FileWriter("./runBatch50_5.txt"));
 		br.write(out);
 		br.close();
 	}

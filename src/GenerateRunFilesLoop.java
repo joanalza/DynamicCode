@@ -6,17 +6,17 @@ public class GenerateRunFilesLoop {
 
 	public static void main(String[] args) throws IOException {
 
-		String[] fileNames = { "data/taillard_instances/tai50_5_0.fsp", "data/taillard_instances/tai50_5_1.fsp",
+		String[] fileNames = { "data/taillard_instances/tai100_10_0.fsp" };/*, "data/taillard_instances/tai50_5_1.fsp",
 				"data/taillard_instances/tai50_5_2.fsp","data/taillard_instances/tai50_5_3.fsp","data/taillard_instances/tai50_5_4.fsp",
 				"data/taillard_instances/tai50_5_5.fsp","data/taillard_instances/tai50_5_6.fsp","data/taillard_instances/tai50_5_7.fsp",
-				"data/taillard_instances/tai50_5_8.fsp","data/taillard_instances/tai50_5_9.fsp"};
+				"data/taillard_instances/tai50_5_8.fsp","data/taillard_instances/tai50_5_9.fsp"};*/
 
-		String[] dynamicProfilePaths = { "data/dynamic/dynProfile-noChange.txt", "data/dynamic/dynProfile-n50-c3-Cayley5.txt", "data/dynamic/dynProfile-n50-c10-Cayley10.txt" };
+		String[] dynamicProfilePaths = { /*"data/dynamic/dynProfile-noChange.txt", */ "data/dynamic/dynProfile-n100-c3-Cayley5.txt"};//, "data/dynamic/dynProfile-n50-c10-Cayley10.txt" };
 
 
 		String coolingSchedule = "azizi_adaptive_currentbest";
-		double[] initialStdevs = { 0.02, 0,04 };
-		double[] coolingParams = { 0.06, 0.08 };
+		double[] initialStdevs = { 0.002, 0.004, 0.006, 0.008,0.01 };
+		double[] coolingParams = { 0.002, 0.004, 0.006, 0.008,0.01 };
 
 		int[] populationSizes = new int[] { 500 };
 
@@ -70,7 +70,7 @@ public class GenerateRunFilesLoop {
 
 		String out = header + content + "\n" + lastline;
 		System.out.println(out);
-		BufferedWriter br = new BufferedWriter(new FileWriter("./runBatch50_5.txt"));
+		BufferedWriter br = new BufferedWriter(new FileWriter("./runBatch100.txt"));
 		br.write(out);
 		br.close();
 	}

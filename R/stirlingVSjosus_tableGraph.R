@@ -1,11 +1,11 @@
 library(ggplot2)
 
-n <- length(list.dirs("//nas-csdm.rgu.ac.uk/csdm-H/Students/17/1715818/Desktop/Project/Code/DynamicPermutationOptimisation/plots/stirlingVSjosu/"))
+n <- length(list.dirs("C:/Project/Code/DynamicPermutationOptimisation/plots/stirlingVSjosu/"))
 for(z in 1:(n-1)){
   ##### GET DATA #####
   # Put instance results in the directory
-  directory <- paste0("//nas-csdm.rgu.ac.uk/csdm-H/Students/17/1715818/Desktop/Project/Code/DynamicPermutationOptimisation/results/stirlingVSJosus/Cayley ",z,"/")
-  setwd(paste0("//nas-csdm.rgu.ac.uk/csdm-H/Students/17/1715818/Desktop/Project/Code/DynamicPermutationOptimisation/plots/stirlingVSjosu/Cayley ",z,"/"))
+  directory <- paste0("C:/Project/Code/DynamicPermutationOptimisation/results/stirlingVSJosus/Cayley ",z,"/")
+  setwd(paste0("C:/Project/Code/DynamicPermutationOptimisation/plots/stirlingVSjosu/Cayley ",z,"/"))
   
   # Get instance names
   instances <- list.files(directory, pattern = "*.csv")
@@ -23,7 +23,7 @@ for(z in 1:(n-1)){
   
   
   ##### MAKE GRAPHS #####
-  setwd(paste0("//nas-csdm.rgu.ac.uk/csdm-H/Students/17/1715818/Desktop/Project/Code/DynamicPermutationOptimisation/plots/stirlingVSjosu/Cayley ",z,"/"))
+  setwd(paste0("C:/Project/Code/DynamicPermutationOptimisation/plots/stirlingVSjosu/Cayley ",z,"/"))
   
   files <- list.files(pattern = "*.csv")
   sizes <- sub("*-cayley..csv",'', sub("table_n*",'', files))

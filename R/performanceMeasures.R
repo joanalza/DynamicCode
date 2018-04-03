@@ -1,4 +1,4 @@
-#### PERFORMANCE MEASURE FUNCTIONS ####
+#### PERFORMANCE MEASURE FUNCTIONS #### 
 
 
 #' @description Gets the average of the best-of-generation of an algorithm after several runs.
@@ -119,7 +119,7 @@ F.distance.based.measure <- function(files, n){
 }
 
 ## MAIN ####
-directory <- "//nas-csdm.rgu.ac.uk/csdm-H/Students/17/1715818/Desktop/Project/Code/DynamicPermutationOptimisation/results/testRKEDA/tai100_10_0-diversity/"
+directory <- "C:/Project/Code/DynamicOptimizationProblems/results/testRKEDA/tai100_10_0(0.002-0.01)"
 setwd(directory)
 
 # Get files
@@ -136,7 +136,7 @@ instances <- unlist(unique(sapply(strsplit(files.progress,"-"), FUN = function(x
   return(x[grep("tai",x)])
 })))
 
-optimums <- read.csv("~/Desktop/Project/Code/DynamicPermutationOptimisation/data/optimums/optimum.csv")
+optimums <- read.csv("C:/Project/Code/DynamicOptimizationProblems/data/optimums/optimum.csv")
 
 # Run performance measures
 
@@ -186,5 +186,5 @@ closeAllConnections()
 df.pm <- data.frame(best.of.gen, rank.bog, mean.ARR, rank.ARR, relative.ratio, rank.rr,distance.based.measure, rank.dbm, average.rank)
 df.pm <- df.pm[order(df.pm$average.rank),]
 dir.name <- sub("[^a-z]*","",sub(dirname(getwd()),"",getwd()))
-write.csv(df.pm, paste0("//nas-csdm.rgu.ac.uk/csdm-H/Students/17/1715818/Desktop/Project/Code/DynamicPermutationOptimisation/performanceMeasure/",dir.name,".csv") ,row.names = TRUE)
+write.csv(df.pm, paste0("C:/Project/Code/DynamicOptimizationProblems/performanceMeasure/",dir.name,".csv") ,row.names = TRUE)
 closeAllConnections()

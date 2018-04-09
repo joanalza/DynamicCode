@@ -515,7 +515,10 @@ public class RKEDA {
                 rk previousBest = bestTemp.copyOf();
                 bestTemp = EDAUtil.getBestSolutionMin(population);
 
-                // If the min value of new pop is better than the older one change them
+                		///////////////
+                		//  OVERALL  //
+                		///////////////
+                // If the min value of new pop is better than the older one change them.  
                 if (bestTemp.fitness < best.fitness) {
                     best = bestTemp.copyOf();
                     noImprovementCounter = 0;
@@ -529,7 +532,10 @@ public class RKEDA {
                 	noImprovementCounter ++;
                 }
                 
-                // The changes are not good
+        				///////////////////
+        				//  CURRENTBEST  //
+        				///////////////////
+                // If the min value improves the last update, reinitialise the parameter. 
                 if (bestTemp.fitness < previousBest.fitness) {
                 	noCurrentImprovementCounter = 0;
                 }
@@ -537,7 +543,7 @@ public class RKEDA {
                 	noCurrentImprovementCounter ++;
                 }
                 
-                // If the min value of new pop is better than the older one change them
+                // If the min value of new pop is better than the older one change them. 
                 if (bestTemp.fitness < bestChange.fitness) {
                     bestChange = bestTemp.copyOf();
                 }

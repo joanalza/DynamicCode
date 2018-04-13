@@ -332,8 +332,8 @@ public class RKEDA {
         int count = 0;
         int countToBest = 0;
         int diversity = 0;
-        String out = "ProbName \t BestSolution \t bestFitness \t err \t countToBest \n ";
-        String out1 = "ProbName \t BestSolution \t bestFitness \t err \t countToBest \n ";
+//        String out = "ProbName \t BestSolution \t bestFitness \t err \t countToBest \n ";
+//        String out1 = "ProbName \t BestSolution \t bestFitness \t err \t countToBest \n ";
         
 
 //        BufferedWriter br = new BufferedWriter(new FileWriter(resultsPath + "improvement-" + saveAs + ".txt"));
@@ -341,15 +341,12 @@ public class RKEDA {
         
         // Create a random population
         for (int i = 0; i < populationSize; i++) {
-        	//Orderings.setSeedToRandom(i+1);
             rk perm = new rk(Orderings.generateRandomRK(length));
             perm.setPermutation(Orderings.randomKeyToAL(perm.copyGene()));
             perm.normalise();
             perm.setFitness(permProb.evaluate(perm.getPermutation()));
-            //System.out.println(perm.print());
             count++;
             population.add(perm.copyOf());
-            //System.out.println(perm.print());
         }
         
 
@@ -371,25 +368,10 @@ public class RKEDA {
             bestChange = best;
             matrix = Arrays.copyOf(EDAUtil.getPMTruncationSelection1(population, truncSize), length);
         }
-        
-//      System.out.println("Population Diversity: " + EDAUtil.getDiversity(population, truncSize, "hamming"));        
-        
-        
-       // rk previousBest;
+
        
         
         double stdev = initialStdev;
-        
-//        if(this.coolingSchedule.equals("original")){
-//        	double weight = 1;
-//        	stdev = initialStdev * weight;
-//        }
-//        else if(this.coolingSchedule.equals("azizi_adaptive_overallbest")){
-//        	stdev = stdev_min + lambda * Math.log(1+noImprovementCounter);
-//        }
-//        else if(this.coolingSchedule.equals("azizi_adaptive_currentbest")){
-//        	stdev = stdev_min + lambda * Math.log(1+noCurrentImprovementCounter);
-//        }
         
         BufferedWriter br2 = new BufferedWriter(new FileWriter(resultsPath + "progress" + "-" + saveAs + "-.csv"));
         String progress = null;
@@ -403,11 +385,10 @@ public class RKEDA {
         br2.write(progress);
 
         DecimalFormat df = new DecimalFormat("0.0000");
-//        df.setRoundingMode(RoundingMode.CEILING);
         
-//        boolean cool = true;
         int j = 1, iChange =1, genChange = 1;
-//        outer:
+
+        // Iterative process
         do {
             
             // If a change is produced, change the structure of the identity permutation
@@ -424,7 +405,6 @@ public class RKEDA {
 			}
 			
 	        double avgfit = EDAUtil.getPopulationAverageFitness(population);
-	        //double rpd = EDAUtil.getRelativePercentageDeviation(EDAUtil.getBestSolutionMin(population), permProb.optimum);
 	        
 //	      	DIVERSITY
 	        if (diversityDistance != null){
@@ -470,11 +450,6 @@ public class RKEDA {
                     }
                 }
                 populationTemp.add(child.copyOf());
-
-//                if (child.fitness == optimal) {
-//                    best = child.copyOf();
-//                    break outer;
-//                }
             }
 
             // Update population
@@ -523,9 +498,8 @@ public class RKEDA {
                     best = bestTemp.copyOf();
                     noImprovementCounter = 0;
                     countToBest = count;
-//                    double err = ((double) best.fitness - (double) optimal) / (double) optimal;
                      
-                    out1 = problempath + "\t" + Arrays.toString(best.permutation) + "\t" + best.getFitness() + "\t" + 0.00 + "\t" + countToBest + "\n ";
+//                    out1 = problempath + "\t" + Arrays.toString(best.permutation) + "\t" + best.getFitness() + "\t" + 0.00 + "\t" + countToBest + "\n ";
                     //br.write(out1);
                 }
                 else{
@@ -551,16 +525,12 @@ public class RKEDA {
             
             // Update the Cooling scheme
             if(this.coolingSchedule.equals("original")){
-//            	double weight = 1 - ((double) j / gens);
-//            	stdev = initialStdev * weight;
             	stdev = this.cooling.getNewTemperature(j);
             }
             else if(this.coolingSchedule.equals("azizi_adaptive_overallbest")){
-//            	stdev = stdev_min + lambda * Math.log(1+noImprovementCounter);
             	stdev = this.cooling.getNewTemperature(noImprovementCounter);
             }
             else if(this.coolingSchedule.equals("azizi_adaptive_currentbest")){
-//            	stdev = stdev_min + lambda * Math.log(1+noCurrentImprovementCounter);
             	stdev = this.cooling.getNewTemperature(noCurrentImprovementCounter);
             }
             
@@ -571,7 +541,6 @@ public class RKEDA {
         } while (count < FEs);
 
         double avgfit = EDAUtil.getPopulationAverageFitness(population);
-//        double rpd = EDAUtil.getRelativePercentageDeviation(EDAUtil.getBestSolutionMin(population), permProb.optimum);
 
         if (diversityDistance == null){
 			System.out.println(j+"\t"+count+"\t"+EDAUtil.getBestSolutionMin(population).fitness+"\t"+df.format(avgfit)+
@@ -591,7 +560,7 @@ public class RKEDA {
         br2.write(progress);
         br2.close();
 //        br.close();
-        out += problempath + "\t" + Arrays.toString(best.permutation) + "\t" + best.getFitness() + "\t" + 0.00 + "\t" + countToBest + "\n ";
+//        out += problempath + "\t" + Arrays.toString(best.permutation) + "\t" + best.getFitness() + "\t" + 0.00 + "\t" + countToBest + "\n ";
 //        BufferedWriter br1 = new BufferedWriter(new FileWriter((resultsPath + "best_known-" + saveAs + ".txt")));
 //        br1.write(out);
 //        br1.close();

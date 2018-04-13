@@ -1,13 +1,13 @@
 
 # Put instance results in the directory
-directory <- "//nas-csdm.rgu.ac.uk/csdm-H/Students/17/1715818/Desktop/Project/Code/DynamicPermutationOptimisation/results/diffDynRKEDA/tai50_10/"
-setwd("//nas-csdm.rgu.ac.uk/csdm-H/Students/17/1715818/Desktop/Project/Code/DynamicPermutationOptimisation/plots/diffDynRKEDA/tai50_10/")
+directory <- "C:/Project/Code/DynamicOptimizationProblems/results/cluster/tai50_20/"
+setwd("C:/Project/Code/DynamicOptimizationProblems/plots/cluster/tai50_20/")
 
 # Get instance names
 instances <- list.files(directory, pattern = "*.csv")
 
 # Get optimums
-optimums <- read.csv("~/Desktop/Project/Code/DynamicPermutationOptimisation/data/optimums/optimum.csv")
+optimums <- read.csv("C:/Project/Code/DynamicOptimizationProblems/data/optimums/optimum.csv")
 
 apply(as.array(instances), MARGIN = 1, FUN = function(instance){
   df <- read.csv(paste0(directory,"/",instance), header = TRUE)
@@ -26,7 +26,7 @@ apply(as.array(instances), MARGIN = 1, FUN = function(instance){
        #xlim = c(0,50000), 
        ylim = c(optima, max(df$avgFit)*1.1)
        )
-  title(main = "Behaviour of the fitness during the execution")
+  title(main = paste0("Behaviour of the fitness during the execution of ", name))
   lines(x = df$gen, y = df$avgFit, lty=2, col = "red")
   lines(x = df$gen, y = df$bestFound, lty=4, col = "skyblue3")
   abline(h= optima, col="green")

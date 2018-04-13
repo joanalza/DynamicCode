@@ -1,4 +1,4 @@
-#### PERFORMANCE MEASURE FUNCTIONS ####
+#### PERFORMANCE MEASURE FUNCTIONS #### 
 
 
 #' @description Gets the average of the best-of-generation of an algorithm after several runs.
@@ -120,6 +120,7 @@ F.distance.based.measure <- function(files, n){
 
 ## MAIN ####
 directory <- "C:/Project/Code/DynamicOptimizationProblems/results/testRKEDA/tai100_10_0(0-0.025)/"
+
 setwd(directory)
 
 # Get files

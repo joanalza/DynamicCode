@@ -119,7 +119,7 @@ F.distance.based.measure <- function(files, n){
 }
 
 ## MAIN ####
-directory <- "C:/Project/Code/DynamicOptimizationProblems/results/testRKEDA/tai100_10_0(0-0.025)/"
+directory <- "C:/Project/Code/DynamicOptimizationProblems/results/cluster/tai200_10_0/"
 
 setwd(directory)
 

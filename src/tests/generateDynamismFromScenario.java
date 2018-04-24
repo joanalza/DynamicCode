@@ -7,8 +7,8 @@ public class generateDynamismFromScenario {
 
 	public static void main(String[] args) throws IOException {
         
-		int[] sizes = {100};
-        int[] bigScenario = {60};
+		int[] sizes = {50};
+        int[] bigScenario = {45};
         int[] nChanges = {10};
         
         for(int i:bigScenario){

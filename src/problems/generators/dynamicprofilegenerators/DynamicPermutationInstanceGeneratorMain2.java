@@ -12,8 +12,8 @@ public class DynamicPermutationInstanceGeneratorMain2 {
 		String resultsPath = "./data/dynamic/";
 		String saveAs;
 
-		int[] arraySizes = {500};
-		int[] arrayDistances = {3,5,10,15,30,50,100,200,500}; // 3,5,10,15,30,50,100
+		int[] arraySizes = {50};
+		int[] arrayDistances = {45}; // 3,5,10,15,30,50,100
 		int nChanges = 1000;
 		
 		for (int i =0; i<arraySizes.length;i++){

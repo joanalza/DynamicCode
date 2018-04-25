@@ -7,14 +7,14 @@ public class generateDynamismFromScenario {
 
 	public static void main(String[] args) throws IOException {
         
-		int[] sizes = {50};
-        int[] bigScenario = {45};
-        int[] nChanges = {10};
+		int[] sizes = {100};
+        int[] bigScenario = {2,20,50,90};
+        int[] nChanges = {3,10,20};
         
         for(int i:bigScenario){
         	for(int j:nChanges){
         		for (int size:sizes){
-	        		String dynPath = "./data/dynamic/dynProfile-n"+size+"-c1000-Cayley" + i + ".txt";
+	        		String dynPath = "./data/dynamic/bigScenario/dynProfile-n"+size+"-c1000-Cayley" + i + ".txt";
 	        		String[] str = new String[] {dynPath, Integer.toString(j)};
 	        		
 	        		DynamicBenchmarkFromScenario.main(str);

@@ -12,8 +12,8 @@ public class DynamicPermutationInstanceGeneratorMain2 {
 		String resultsPath = "./data/dynamic/bigScenario/";
 		String saveAs;
 
-		int[] arraySizes = {100};
-		int[] arrayDistances = {2,20,50,90}; // 3,5,10,15,30,50,100
+		int[] arraySizes = {500};
+		int[] arrayDistances = {2,100,250,450}; // 3,5,10,15,30,50,100
 		int nChanges = 1000;
 		
 		for (int i =0; i<arraySizes.length;i++){

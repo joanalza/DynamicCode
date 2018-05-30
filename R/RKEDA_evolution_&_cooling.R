@@ -1,7 +1,7 @@
 
 # Put instance results in the directory
-directory <- "C:/Project/Code/DynamicOptimizationProblems/results/cluster/tai200_20/"
-setwd("C:/Project/Code/DynamicOptimizationProblems/plots/cluster/tai200_20/")
+directory <- "C:/Project/Code/RKEDAJAVA/results/"
+setwd("C:/Project/Code/DynamicOptimizationProblems/")
 
 # Get instance names
 instances <- list.files(directory, pattern = "*.csv")
@@ -11,7 +11,7 @@ optimums <- read.csv("C:/Project/Code/DynamicOptimizationProblems/data/optimums/
 
 apply(as.array(instances), MARGIN = 1, FUN = function(instance){
   df <- read.csv(paste0(directory,"/",instance), header = TRUE)
-  #browser()
+  # browser()
   name <- unlist(strsplit(instance, "-"))
   name <- name[grep("tai",name)]
   optima <- optimums[which(name == optimums$Instance),"TotalFlowTime"] 
@@ -24,7 +24,7 @@ apply(as.array(instances), MARGIN = 1, FUN = function(instance){
   plot(x =df$gen, y = df$bestFit, 
        cex.lab=0.8, ylab = "Fitness", xlab = "Generation", type = "l", 
        #xlim = c(0,50000), 
-       ylim = c(optima, max(df$avgFit)*1.1)
+       ylim = c(min(df$avgFit), max(df$avgFit)*1.1)
        )
   title(main = paste0("Behaviour of the fitness during the execution of ", name))
   lines(x = df$gen, y = df$avgFit, lty=2, col = "red")
@@ -34,7 +34,7 @@ apply(as.array(instances), MARGIN = 1, FUN = function(instance){
          col=c("black", "red", "green","skyblue3"), lty=c(1,2,1,4), cex=0.5)
   
   # COOLING SCHEME
-  plot(x = df$gen, y = df$sd, 
+  plot(x = df$gen, y = df$sd,
        col = "blue", cex.lab=0.8, ylab = "Variance(cooling parameter)", xlab = "Generation", type = "l",
        #xlim = c(0,50000),
        ylim = c(min(df$sd), max(df$sd)*1.1)
